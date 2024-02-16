@@ -43,13 +43,24 @@ app.post("/api/v1/getWazeData", (req, res) => {
   console.log(fgOK, "incoming post getWazeData", url);
 
   puppeteer
-    .launch()
+    .launch({
+      headless: true,
+      timeout: 0,
+    })
     .then(async (browser) => {
       const page = await browser.newPage();
       await page.goto(url);
 
       //Wait for the page to be loaded
+      await page.waitForSelector(".wz-share-drive-card__address-street", {
+        timeout: 3000,
+      });
+
       await page.waitForSelector(".wz-share-drive-card__address", {
+        timeout: 3000,
+      });
+
+      await page.waitForSelector(".wz-share-drive-card__arrival-time", {
         timeout: 3000,
       });
 
