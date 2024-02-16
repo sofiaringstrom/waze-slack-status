@@ -1,0 +1,17 @@
+# .gitignore
+
+# Ignore node_modules folder
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore the build folder
+/dist
+
+# Ignore .env files
+.env
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
